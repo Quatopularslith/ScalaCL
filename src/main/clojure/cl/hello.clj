@@ -4,3 +4,5 @@
 
 (defn -printhello []
   (println "Hello from sbt clojure!!!"))
+
+(-printhello)

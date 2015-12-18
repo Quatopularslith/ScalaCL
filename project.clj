@@ -8,5 +8,5 @@
   :resource-paths ["src/main/resources"]
   :target-path "lib"
   :compile-path "cl-classes"
-  :jar-name "cl.jar"
+  :jar-name "jcl.jar"
   :uberjar-name "cl.jar")
