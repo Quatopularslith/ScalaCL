@@ -1,8 +1,11 @@
 (ns cl.hello
-  (:gen-class :methods [#^{:static true} [printhello [] void]])
+  (:gen-class :methods [^:static [printhello [] void]])
   )
 
 (defn -printhello []
-  (println "Hello from sbt clojure!!!"))
+  (println "Hello from clojure!"))
 
-(-printhello)
+(defn printhi []
+  (println "Hi from clojure!"))
+
+(printhi)
