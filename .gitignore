@@ -1,9 +1,4 @@
 .idea/
-cl-classes/
-dev-resources/
-stale/
 target/
 project/target
 project/project
-.lein-repl-history
-.nrepl-port
