@@ -4,3 +4,5 @@ dev-resources/
 stale/
 target/
 project/
+.lein-repl-history
+.nrepl-port
