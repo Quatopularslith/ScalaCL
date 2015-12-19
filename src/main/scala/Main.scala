@@ -1,6 +1,4 @@
-import cl.hello
-import cl.add
-
+import cl.{bye, hello, add, maybe}
 /**
  * Created by Mnenmenth Alkaborin
  * Please refer to LICENSE file if included
@@ -11,6 +9,8 @@ object Main {
 
   def main(args: Array[String]): Unit = {
     hello.printhello()
+    maybe.printMaybe()
+    bye.printBye()
     println(add.add(30, 30))
   }
 
