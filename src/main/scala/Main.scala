@@ -1,4 +1,4 @@
-import cl.{bye, hello, add, maybe}
+import cl.{add, bye, hello, maybe}
 /**
  * Created by Mnenmenth Alkaborin
  * Please refer to LICENSE file if included
@@ -6,12 +6,10 @@ import cl.{bye, hello, add, maybe}
  * https://github.com/Mnenmenth
  */
 object Main {
-
   def main(args: Array[String]): Unit = {
     hello.printhello()
     maybe.printMaybe()
     bye.printBye()
     println(add.add(30, 30))
   }
-
 }
