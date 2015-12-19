@@ -10,6 +10,6 @@ object Main {
     hello.printhello()
     maybe.printMaybe()
     bye.printBye()
-    println(add.add(30, 30))
+    println(add.add(30, 30) + add.fac(10))
   }
 }
