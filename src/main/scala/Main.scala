@@ -8,6 +8,8 @@ import cl.{add, bye, hello, maybe}
 object Main {
   def main(args: Array[String]): Unit = {
     hello.printhello()
+    hello.printhi()
+    hello.gutentag()
     maybe.printMaybe()
     bye.printBye()
     println(add.add(30, 30) + add.fac(10))
