@@ -24,14 +24,15 @@ object Implicits {
 
   def ¬(b:Boolean) = !b
 
-  
-
   implicit class Super3Tuple[A, B, C](t: (A, B, C)) {
-    def y:B = t._2
-    def z:C = t._3
     def +(that: (A, B, C))(implicit numa: Numeric[A], numb: Numeric[B], numc: Numeric[C]) = {
       (numa.plus(t._1, that._1), numb.plus(t.y, that.y), numc.plus(t.z, that.z))
     }
+
+    def y:B = t._2
+
+    def z:C = t._3
+
     def -(that: (A, B, C))(implicit numa: Numeric[A], numb: Numeric[B], numc: Numeric[C]) = {
       (numa.minus(t._1, that._1), numb.minus(t.y, that.y), numc.minus(t.z, that.z))
     }
@@ -40,13 +41,16 @@ object Implicits {
     }
   }
   implicit class Super2Tuple[A, B](t:(A,B)){
-    def y:B = t._2
     def +(that: (A, B))(implicit numa: Numeric[A], numb: Numeric[B]) = {
       (numa.plus(t._1, that._1), numb.plus(t.y, that.y))
     }
+
     def -(that: (A, B))(implicit numa: Numeric[A], numb: Numeric[B]) = {
       (numa.minus(t._1, that._1), numb.minus(t.y, that.y))
     }
+
+    def y: B = t._2
+
     def *(that: (A,B))(implicit numa: Numeric[A], numb: Numeric[B]) = {
       (numa.times(t._1, that._1), numb.times(t.y, that.y))
     }
@@ -62,19 +66,26 @@ object Implicits {
       }
       remove(t,that)
     }
+
+    def ∩(that: List[A]): List[A] = {
+      def intersect(dis: List[A], dat: List[A]): List[A] = {
+        if (dis == null) {
+          null
+        } else if (¬(dis.head ∈ dat)) {
+          intersect(dis.tail, dat)
+        } else {
+          List(dis.head) ∪ intersect(dis.tail, dat)
+        }
+      }
+      intersect(t, that)
+    }
+
     def ∪(that:List[A]):List[A] = {
       t.filter(a=> a ∉ that) ++ that
     }
-    def ∩(that:List[A]):List[A] ={
-      def intersect(dis:List[A], dat:List[A]):List[A] = {
-        if(dis == null){null}else if(¬(dis.head ∈ dat)){
-          intersect(dis.tail,dat)
-        }else{
-          List(dis.head) ∪ intersect(dis.tail,dat)
-        }
-      }
-      intersect(t,that)
-    }
+
+    def ⊆(that: List[A]) = (t ⊂ that) ∨ (t == that)
+
     def ⊂(that:List[A]):Boolean = {
       var truth = 0
       t.foreach(a => if(!that.contains(a)){
@@ -82,11 +93,11 @@ object Implicits {
       })
       (truth == 0) ∧ (t != that)
     }
-    def ⊆(that:List[A]) = (t ⊂ that) ∨ (t == that)
   }
   implicit class SuperAny[A](a:A){
-    def ∈(that:List[A]) = that.contains(a)
     def ∉(that:List[A]) = !(a ∈ that)
+
+    def ∈(that: List[A]) = that.contains(a)
   }
   implicit class SuperBool(a:Boolean){
     def ∧(b:Boolean) = a && b
